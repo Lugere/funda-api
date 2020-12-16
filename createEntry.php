@@ -15,7 +15,7 @@ $entry     = $object['entry'];
 if ($tableName && in_array($tableName, $allowedTableNames) && $entry) {
   switch ($tableName) {
     case "entries":
-      $query = "INSERT INTO $tableName (subject_id, user_id, question, answer, hint, created_at) values (:subject_id, :question, :user_id, :answer, :hint, :created_at)";
+      $query = "INSERT INTO $tableName (subject_id, question, user_id, answer, hint, created_at) values (:subject_id, :question, :user_id, :answer, :hint, :created_at)";
       $statement = $mysql->prepare($query);
       $statement->execute($entry);
       $result = $mysql->lastInsertId();

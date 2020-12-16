@@ -37,7 +37,7 @@ if ($tableName && in_array($tableName, $allowedTableNames)) {
       break;
 
     case "quiz_entries":
-      $query = "SELECT * FROM $tableName ORDER BY created_at DESC";
+      $query = "SELECT * FROM $tableName";
       $statement = $mysql->prepare($query);
       $statement->execute();
       $result = $statement->fetchAll(PDO::FETCH_ASSOC);
@@ -63,13 +63,13 @@ if ($tableName && in_array($tableName, $allowedTableNames)) {
       $statement->execute();
       $result = $statement->fetchAll(PDO::FETCH_ASSOC);
       break;
-		  
+
     default:
-	  $result = [ $tableName ];
+      $result = [$tableName];
       break;
   }
 } else {
-  $result = [];
+  $result = [$tableName];
 }
 
 echo json_encode($result, JSON_PRETTY_PRINT);

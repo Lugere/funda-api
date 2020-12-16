@@ -17,14 +17,15 @@ print_r($entry);
 if ($tableName && in_array($tableName, $allowedTableNames) && $entry) {
   switch ($tableName) {
     case "entries":
-      $query = "UPDATE $tableName SET subject_id=:subject_id,question=:question,answer=:answer,hint=:hint,created_at=:created_at WHERE entry_id=:entry_id";
+      $query = "UPDATE $tableName SET subject_id=:subject_id, question=:question, answer=:answer, hint=:hint, user_id=:user_id, created_at=:created_at WHERE entry_id=:entry_id";
+      echo $query;
       $statement = $mysql->prepare($query);
       $statement->execute($entry);
       $result = $mysql->lastInsertId();
       break;
 
     case "subjects":
-      $query = "UPDATE $tableName SET title=:title, description=:description";
+      $query = "UPDATE $tableName SET title=:title, 'description'=':description'";
       $statement = $mysql->prepare($query);
       $statement->execute($entry);
       $result = $mysql->lastInsertId();
@@ -45,7 +46,7 @@ if ($tableName && in_array($tableName, $allowedTableNames) && $entry) {
       break;
 
     case "quizzes":
-      $query = "UPDATE $tableName SET title=:title,description=:description";
+      $query = "UPDATE $tableName SET title=:title,'description'=':description'";
       $statement = $mysql->prepare($query);
       $statement->execute($entry);
       $result = $mysql->lastInsertId();
@@ -59,7 +60,7 @@ if ($tableName && in_array($tableName, $allowedTableNames) && $entry) {
       break;
 
     case "users":
-      $query = "UPDATE $tableName SET first_name=:first_name, last_name=:last_name, username=:username, email=:email, password=:password, role=:role";
+      $query = "UPDATE $tableName SET first_name=:first_name, last_name=:last_name, username=:username, email=:email, 'password'=:'password', 'role'=':role'";
       $statement = $mysql->prepare($query);
       $statement->execute($entry);
       $result = $mysql->lastInsertId();

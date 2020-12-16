@@ -73,8 +73,5 @@ if ($tableName && in_array($tableName, $allowedTableNames) && $id && $columnName
   }
 
   $rowCount = $statement->rowCount();
-
   echo $rowCount;
-} else {
-  echo -1;
-}
+} else echo -1;
