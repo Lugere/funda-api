@@ -1,8 +1,8 @@
 <?php
     $host = "localhost";
     $dbname = "funda_db";
-    $user = "root";
-    $pass = "";
+    $dbuser = "root";
+    $dbpass = "";
 
     $allowedTableNames = [
         "entries",
@@ -16,7 +16,7 @@
     ];
 
     try {
-        $mysql = new PDO("mysql:host=$host;dbname=$dbname", $user, $pass);
+        $mysql = new PDO("mysql:host=$host;dbname=$dbname", $dbuser, $dbpass);
     } catch (PDOException $e) {
         die("Database connection failed: " . $$mysql->connect_error);
     }

@@ -5,10 +5,7 @@ require("mysql.php");
 header('Content-Type: application/json');
 
 $body = file_get_contents("php://input");
-
-// Decode the JSON object
 $object = json_decode($body, true);
-
 $tableName = $object['tableName'];
 $entry     = $object['entry'];
 
